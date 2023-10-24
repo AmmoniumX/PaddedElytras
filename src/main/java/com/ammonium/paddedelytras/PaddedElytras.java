@@ -5,6 +5,9 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +18,6 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.common.MinecraftForge;
@@ -95,7 +97,7 @@ public class PaddedElytras
     public void onLivingHurt(LivingHurtEvent event) {
         // Check if the entity is a player
         if(event.getEntity() instanceof Player player) {
-            if (!event.getSource().equals(DamageSource.FLY_INTO_WALL)) {
+            if (!event.getSource().is(DamageTypes.FLY_INTO_WALL)) {
                 return;
             }
 
