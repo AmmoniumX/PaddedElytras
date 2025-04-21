@@ -38,6 +38,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
+import java.util.HashMap;
+import java.util.Map;
+
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(PaddedElytras.MODID)
 public class PaddedElytras
@@ -120,14 +123,25 @@ public class PaddedElytras
     @SubscribeEvent
     public void onVillagerTrades(VillagerTradesEvent event) {
         if (event.getType() == VillagerProfession.LIBRARIAN) {
+            // Book with level 1 enchantment
             ItemStack book1 = new ItemStack(Items.ENCHANTED_BOOK);
-            EnchantmentHelper.setEnchantments(ImmutableMap.of(new PaddedEnchantment(), 1), book1);
+            Map<Enchantment, Integer> enchMap1 = new HashMap<>();
+            enchMap1.put(PADDED.get(), 1);
+            EnchantmentHelper.setEnchantments(enchMap1, book1);
             event.getTrades().get(1).add(new BasicItemListing(15, book1, 12, 10));
+
+            // Book with level 2 enchantment
             ItemStack book2 = new ItemStack(Items.ENCHANTED_BOOK);
-            EnchantmentHelper.setEnchantments(ImmutableMap.of(new PaddedEnchantment(), 2), book2);
+            Map<Enchantment, Integer> enchMap2 = new HashMap<>();
+            enchMap2.put(PADDED.get(), 2);
+            EnchantmentHelper.setEnchantments(enchMap2, book2);
             event.getTrades().get(1).add(new BasicItemListing(30, book2, 12, 10));
+
+            // Book with level 3 enchantment
             ItemStack book3 = new ItemStack(Items.ENCHANTED_BOOK);
-            EnchantmentHelper.setEnchantments(ImmutableMap.of(new PaddedEnchantment(), 3), book3);
+            Map<Enchantment, Integer> enchMap3 = new HashMap<>();
+            enchMap3.put(PADDED.get(), 3);
+            EnchantmentHelper.setEnchantments(enchMap3, book3);
             event.getTrades().get(1).add(new BasicItemListing(45, book3, 12, 10));
         }
     }
