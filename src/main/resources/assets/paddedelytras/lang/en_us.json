@@ -1,3 +1,4 @@
 {
-  "enchantment.paddedelytras.padded": "Padded"
+  "enchantment.paddedelytras.padded": "Padded",
+  "enchantment.paddedelytras.padded.desc": "Reduces Elytra's kinetic damage by 33% per level"
 }
